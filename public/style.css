@@ -1,0 +1,150 @@
+/* Общие стили страницы */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background-color: #3b2f2f; /* Темно-коричневый */
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+header img {
+    width: 50px; /* Размер логотипа */
+    height: auto;
+    margin-right: 20px; /* Отступ между логотипом и заголовком */
+}
+
+h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    color: #fff;
+}
+
+/* Стили заголовков */
+h2 {
+    color: #3b2f2f; /* Темно-коричневый */
+    margin-bottom: 15px;
+    border-bottom: 2px solid #8B4513;
+    padding-bottom: 5px;
+    font-size: 1.5rem;
+}
+
+/* Стили для таблицы оценок */
+#grades-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+#grades-table th, #grades-table td {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+#grades-table th {
+    background-color: #3b2f2f;
+    color: #fff;
+    font-weight: normal;
+}
+
+#grades-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#grades-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Стили для кнопок */
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    background-color: #8B4513;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #6f3217;
+}
+
+/* Стили для ввода данных */
+input[type="text"], input[type="date"] {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: calc(100% - 22px);
+    margin-bottom: 15px;
+    font-size: 14px;
+    background-color: #fff;
+}
+
+input[type="text"]:focus, input[type="date"]:focus {
+    border-color: #8B4513;
+    outline: none;
+    box-shadow: 0 0 5px rgba(139, 69, 19, 0.5);
+}
+
+/* Стили для контейнера личного кабинета ученика */
+#student-info {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+/* Стили для сообщений об ошибках */
+#error-message {
+    color: red;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Стили для ссылки на "Изменить профиль" */
+.edit-profile {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #007BFF;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+}
+
+.edit-profile:hover {
+    background-color: #0056b3;
+}
+
+/* Добавление стилей для нового логотипа */
+#logo {
+    width: 100px; /* Размер логотипа */
+    height: auto;
+    margin-right: 20px; /* Отступ от текста заголовка */
+}

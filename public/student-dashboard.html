@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> <!-- Убедитесь, что путь к CSS правильный -->
+</head>
+<body>
+    <header>
+        <img src="../assets/logo.jpg" alt="Logo" id="logo"> <!-- Укажите правильный путь к вашему логотипу -->
+        <h1>Электронный журнал</h1>
+    </header>
+    <div class="container">
+        <div id="student-info">
+            <h2 style="font-family: 'Noto Kufi Arabic'">ٱلسَّلَامُ عَلَيْكُم, <span id="student-name">Student Name</span></h2>
+        </div>
+        <table id="grades-table">
+            
+            <thead>
+                <tr>
+                    <th>Оценка</th>
+                    <th>Дата</th>
+                </tr>
+            </thead>
+            <tbody id="grades-body">
+                <!-- Оценки будут вставляться здесь -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        async function fetchStudentData() {
+            try {
+                const response = await fetch('/student/dashboard', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${getToken()}` // Убедитесь, что у вас есть способ получить токен сессии
+                    }
+                });
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                displayStudentData(data);
+            } catch (error) {
+                console.error('Error fetching student data:', error);
+                document.getElementById('student-info').innerText = 'Error loading student data.';
+            }
+        }
+
+        function displayStudentData(data) {
+    const studentName = document.getElementById('student-name');
+    const gradesBody = document.getElementById('grades-body');
+
+    if (data.student) {
+        studentName.textContent = data.student.name;
+
+        const gradesHtml = data.student.grades.map(grade => {
+            const date = new Date(grade.date);
+            const formattedDate = date.toLocaleDateString('ru-RU'); // Форматирование даты по-русски (можно настроить по вашему усмотрению)
+
+            return `
+                <tr>
+                    <td>${grade.grade}</td>
+                    <td>${formattedDate}</td>
+                </tr>
+            `;
+        }).join('');
+        gradesBody.innerHTML = gradesHtml;
+    } else {
+        document.getElementById('student-info').innerText = 'No student data available.';
+    }
+}
+
+
+        function getToken() {
+            // Метод для получения токена, если необходимо
+            return ''; // Замените на актуальный метод получения токена
+        }
+
+        // Загрузка данных при загрузке страницы
+        document.addEventListener('DOMContentLoaded', fetchStudentData);
+    </script>
+</body>
+</html>
