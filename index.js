@@ -24,7 +24,7 @@ app.use(session({
     saveUninitialized: false,
 }));
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 
 // Хелпер для обработки ошибок
 const handleError = (err, res, message = 'Server error') => {
